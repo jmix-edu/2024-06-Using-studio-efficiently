@@ -37,12 +37,17 @@ dependencies {
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
-    runtimeOnly 'org.hsqldb:hsqldb'
 
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
     testImplementation 'io.jmix.flowui:jmix-flowui-test-assist'
+    implementation 'org.postgresql:postgresql'
+    implementation 'io.jmix.quartz:jmix-quartz-flowui-starter'
+    implementation 'io.jmix.quartz:jmix-quartz-starter'
+
+    implementation group: 'com.codeborne', name: 'selenide', version: '7.3.2'
+
 }
 
 test {

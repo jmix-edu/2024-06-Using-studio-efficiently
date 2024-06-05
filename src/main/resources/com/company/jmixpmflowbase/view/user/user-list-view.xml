@@ -5,10 +5,11 @@
     <data>
         <collection id="usersDc"
                     class="com.company.jmixpmflowbase.entity.User">
-            <fetchPlan extends="_base"/>
+            <fetchPlan extends="_instance_name">
+            </fetchPlan>
             <loader id="usersDl" readOnly="true">
                 <query>
-                    <![CDATA[select e from User e order by e.username]]>
+                    <![CDATA[select e from User e]]>
                 </query>
             </loader>
         </collection>
@@ -43,29 +44,31 @@
             </dropdownButton>
             <simplePagination id="pagination" dataLoader="usersDl"/>
         </hbox>
-        <dataGrid id="usersDataGrid"
-                  width="100%"
-                  columnReorderingAllowed="true"
-                  minHeight="20em"
-                  dataContainer="usersDc">
-            <actions>
-                <action id="create" type="list_create"/>
-                <action id="edit" type="list_edit"/>
-                <action id="remove" type="list_remove"/>
-                <action id="showRoleAssignments" type="sec_showRoleAssignments"/>
-                <action id="changePassword" type="sec_changePassword"/>
-                <action id="resetPassword" type="sec_resetPassword"/>
-                <action id="showUserSubstitutions" type="sec_showUserSubstitutions"/>
-            </actions>
-            <columns resizable="true">
-                <column property="username"/>
-                <column property="firstName"/>
-                <column property="lastName"/>
-                <column property="email"/>
-                <column property="timeZoneId"/>
-                <column property="active"/>
-            </columns>
-        </dataGrid>
+        <hbox width="100%">
+            <dataGrid id="usersDataGrid"
+                          width="100%"
+                          columnReorderingAllowed="true"
+                          minHeight="20em"
+                          dataContainer="usersDc">
+                <actions>
+                    <action id="create" type="list_create"/>
+                    <action id="edit" type="list_edit"/>
+                    <action id="remove" type="list_remove"/>
+                    <action id="showRoleAssignments" type="sec_showRoleAssignments"/>
+                    <action id="changePassword" type="sec_changePassword"/>
+                    <action id="resetPassword" type="sec_resetPassword"/>
+                    <action id="showUserSubstitutions" type="sec_showUserSubstitutions"/>
+                </actions>
+                <columns resizable="true">
+                    <column property="username"/>
+                    <column property="firstName"/>
+                    <column property="lastName"/>
+                    <column property="email"/>
+                    <column property="timeZoneId"/>
+                    <column property="active"/>
+                </columns>
+            </dataGrid>
+        </hbox>
         <hbox id="lookupActions" visible="false">
             <button id="selectBtn" action="selectAction"/>
             <button id="discardBtn" action="discardAction"/>

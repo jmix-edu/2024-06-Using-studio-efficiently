@@ -1,5 +1,7 @@
 package com.company.jmixpmflowbase.user;
 
+import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
 import com.company.jmixpmflowbase.entity.User;
 import com.company.jmixpmflowbase.test_support.AuthenticatedAsAdmin;
 import io.jmix.core.DataManager;
@@ -7,6 +9,7 @@ import io.jmix.core.security.UserRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.openqa.selenium.By;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -47,6 +50,14 @@ public class UserTest {
         // Check the new user is available through UserRepository
         UserDetails userDetails = userRepository.loadUserByUsername(user.getUsername());
         assertThat(userDetails).isEqualTo(user);
+    }
+
+    @Test
+    void testPage() {
+        Selenide.open();
+        SelenideElement element = $(By.name("some name"));
+        element.shouldBe(visible);
+
     }
 
     @AfterEach

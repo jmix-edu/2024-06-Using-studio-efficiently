@@ -15,6 +15,7 @@ public class TaskService {
     @Autowired
     private DataManager dataManager;
 
+
     public User findLeastBusyUser() {
         List<KeyValueEntity> keyValueEntities = dataManager.loadValues(new ValueLoadContext().setQuery(new ValueLoadContext.Query(
                 "select u, sum(t.estimatedEfforts) from User u " +
@@ -27,6 +28,9 @@ public class TaskService {
         if (leastBusy == null) {
             throw new IllegalStateException();
         }
+
+        User uer = new User();
+
         return leastBusy;
     }
 }
